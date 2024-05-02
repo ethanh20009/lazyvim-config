@@ -9,7 +9,7 @@ return {
         vim.keymap.set("n", "<leader>dr", function()
           vim.cmd.RustLsp("debuggables")
         end, { desc = "Rust Debuggables", buffer = bufnr })
-        -- vim.keymap.set("i", "'", "'")
+        vim.keymap.set("i", "'", "'")
       end,
     },
   },
