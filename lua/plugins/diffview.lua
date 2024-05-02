@@ -3,6 +3,23 @@ return {
   keys = {
     { "<leader>gv", "<cmd>DiffviewOpen<cr>", desc = "Diff View Open" },
     { "<leader>gd", "<cmd>DiffviewClose<cr>", desc = "Diff View Close" },
+    {
+      "<leader>gV",
+      function()
+        local Job = require("plenary.job")
+        Job:new({
+          command = "gh",
+          args = { "pr", "view" },
+          on_stdout = function(error, data, job)
+            vim.notify(data)
+          end,
+          on_stderr = function(error, data, self)
+            print(data)
+          end,
+        }):start()
+      end,
+      desc = "PR Changes",
+    },
   },
   opts = {
     keymaps = {
