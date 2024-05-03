@@ -3,6 +3,7 @@ return {
   keys = {
     { "<leader>gv", "<cmd>DiffviewOpen<cr>", desc = "Diff View Open" },
     { "<leader>gd", "<cmd>DiffviewClose<cr>", desc = "Diff View Close" },
+    { "<leader>gV", ":DiffviewOpen ", desc = "Compare with branch" },
   },
   opts = {
     keymaps = {
