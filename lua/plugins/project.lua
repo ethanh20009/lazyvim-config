@@ -1,6 +1,7 @@
 return {
   {
     "telescope.nvim",
+    tag = "0.1.7",
     dependencies = {
       {
         "nvim-telescope/telescope-project.nvim",
@@ -17,6 +18,15 @@ return {
             desc = "Projects",
           },
         },
+      },
+    },
+    keys = {
+      {
+        "gr",
+        function()
+          require("telescope.builtin").lsp_references({ include_current_line = true })
+        end,
+        { noremap = true, silent = true },
       },
     },
   },
