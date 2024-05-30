@@ -33,6 +33,10 @@ return { -- correctly setup lspconfig
     },
   },
   {
+    "akinsho/bufferline.nvim",
+    branch = "main",
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
