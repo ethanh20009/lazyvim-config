@@ -27,4 +27,23 @@ return {
       },
     },
   },
+  {
+    "LunarVim/bigfile.nvim",
+    opts = {
+      filesize = 1,
+      pattern = {
+        "*.json",
+      },
+    },
+  },
+  -- {
+  --   "pteroctopus/faster.nvim",
+  --   opts = {
+  --     behaviours = {
+  --       bigfile = {
+  --         filesize = 1,
+  --       },
+  --     },
+  --   },
+  -- },
 }
