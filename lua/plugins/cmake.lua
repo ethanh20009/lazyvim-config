@@ -8,9 +8,23 @@ return {
       servers = {
         clangd = {
           keys = {
-            { "<leader>dRb", "<cmd>CMakeBuild<CR>", desc = "CMake Build" },
-            { "<leader>dRd", "<cmd>CMakeDebug<CR>", desc = "CMake Run Debug" },
-            { "<leader>dRr", "<cmd>CMakeRun<CR>", desc = "CMake Run" },
+            { "<F10>b", "<cmd>CMakeBuild<CR>", desc = "CMake Build" },
+            { "<F10>d", "<cmd>CMakeDebug<CR>", desc = "CMake Run Debug" },
+            { "<F10>r", "<cmd>CMakeRun<CR>", desc = "CMake Run" },
+          },
+        },
+      },
+    },
+  },
+  {
+    "folke/which-key.nvim",
+    opts = {
+      spec = {
+        {
+          mode = { "n", "v" },
+          {
+            "<F10>",
+            group = "run",
           },
         },
       },
