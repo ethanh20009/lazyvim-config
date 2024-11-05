@@ -27,13 +27,11 @@ return {
             "gitcommit",
             "latex",
             "mail",
-            "markdown",
             "norg",
             "org",
             "pandoc",
             "rst",
             "tex",
-            "text",
           },
           settings = {
             -- https://valentjn.github.io/ltex/settings.html
@@ -41,7 +39,7 @@ return {
               -- trace = { server = "verbose" },
               -- XXX: unwanted checks are still occurring, often delaying CodeActions
               checkFrequency = "save",
-              language = { "en-GB" },
+              language = "en-GB",
             },
           },
         },
