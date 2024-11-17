@@ -1,9 +1,19 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    opts = function(_, opts)
-      opts.servers["ruff"].enabled = false
-    end,
+    opts = {
+      servers = {
+        ruff = {
+          init_options = {
+            settings = {
+              lint = {
+                enable = false,
+              },
+            },
+          },
+        },
+      },
+    },
   },
 
   {

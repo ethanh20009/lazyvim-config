@@ -4,5 +4,5 @@
 vim.g.dbs = {
   { name = "dev", url = "postgres://myuser:mypassword@localhost:5432/corfu-bookings" },
 }
-vim.g.lazyvim_python_lsp = "pyright"
+-- vim.g.lazyvim_python_lsp = "pyright"
 vim.opt.diffopt:append({ "linematch:50" })
