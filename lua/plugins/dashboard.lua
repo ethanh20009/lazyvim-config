@@ -1,12 +1,11 @@
 return {
-  "nvimdev/dashboard-nvim",
-  event = "VimEnter",
-  opts = {
-    config = {
-      week_header = {
-        enable = true,
+  {
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = {
+        enabled = true,
+        row = 2,
       },
     },
   },
-  dependencies = { { "nvim-tree/nvim-web-devicons" } },
 }
