@@ -51,12 +51,17 @@ return {
       },
     },
   },
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function(opts)
-      require("copilot").setup(opts)
-    end,
-  },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   opts = {
+  --     filetypes = {
+  --       ["*"] = false, -- disable for all other filetypes and ignore default `filetypes`
+  --     },
+  --   },
+  --   config = function(opts)
+  --     require("copilot").setup(opts)
+  --   end,
+  -- },
 }
