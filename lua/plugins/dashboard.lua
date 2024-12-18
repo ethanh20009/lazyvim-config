@@ -6,6 +6,7 @@ return {
         enabled = true,
         row = 2,
       },
+      scroll = { enabled = false },
     },
   },
 }
