@@ -1,6 +1,6 @@
 return {
   {
-    "yetone/avante.nvim",
+    "ethanh20009/avante.nvim",
     event = "VeryLazy",
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
@@ -8,10 +8,19 @@ return {
       provider = "copilot",
       auto_suggestions_provider = "copilot",
       behaviour = {
+        auto_suggestions = false,
+        auto_suggestions_respect_ignore = true,
         auto_apply_diff_after_generation = false,
       },
       hints = { enabled = false },
       -- add any opts here
+    },
+    keys = {
+      {
+        "<leader>ac",
+        "<CMD>AvanteChat<CR>",
+        desc = "avante: chat",
+      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",

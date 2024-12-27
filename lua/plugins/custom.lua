@@ -15,16 +15,16 @@ return {
       colorscheme = "tokyonight",
     },
   },
-  {
-    "nvim-telescope/telescope.nvim",
-    keys = {
-      {
-        "<leader>ff",
-        function()
-          require("telescope.builtin").find_files()
-        end,
-        desc = "Find files (all)",
-      },
-    },
-  },
+  -- {
+  --   "nvim-telescope/telescope.nvim",
+  --   keys = {
+  --     {
+  --       "<leader>ff",
+  --       function()
+  --         require("telescope.builtin").find_files()
+  --       end,
+  --       desc = "Find files (all)",
+  --     },
+  --   },
+  -- },
 }
