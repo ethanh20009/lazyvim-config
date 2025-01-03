@@ -1,10 +1,33 @@
 return {
   {
+    "saghen/blink.cmp",
+    dependencies = {
+      {
+        "saghen/blink.compat",
+      },
+    },
+    opts = {
+      sources = {
+        compat = {
+          "avante_commands",
+          "avante_mentions",
+          "avante_files",
+        },
+      },
+    },
+  },
+  {
     "ethanh20009/avante.nvim",
     event = "VeryLazy",
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
     opts = {
+      file_selector = {
+        --- @alias FileSelectorProvider "native" | "fzf" | "telescope" | string
+        provider = "fzf",
+        -- Options override for custom providers
+        provider_opts = {},
+      },
       provider = "copilot",
       auto_suggestions_provider = "copilot",
       behaviour = {
