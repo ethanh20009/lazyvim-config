@@ -11,6 +11,13 @@ return {
         end, { desc = "Rust Debuggables", buffer = bufnr })
         vim.keymap.set("i", "'", "'")
       end,
+      settings = {
+        ["rust-analyzer"] = {
+          procMacro = {
+            enabled = true,
+          },
+        },
+      },
     },
   },
 }
