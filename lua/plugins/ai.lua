@@ -17,7 +17,7 @@ return {
     },
   },
   {
-    "ethanh20009/avante.nvim",
+    "yetone/avante.nvim",
     event = "VeryLazy",
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
@@ -31,6 +31,7 @@ return {
       provider = "copilot",
       auto_suggestions_provider = "copilot",
       behaviour = {
+        auto_focus_sidebar = false,
         auto_suggestions = false,
         auto_suggestions_respect_ignore = true,
         auto_apply_diff_after_generation = false,

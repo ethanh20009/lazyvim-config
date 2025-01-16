@@ -9,6 +9,9 @@ return {
         vim.keymap.set("n", "<leader>dr", function()
           vim.cmd.RustLsp("debuggables")
         end, { desc = "Rust Debuggables", buffer = bufnr })
+        vim.keymap.set("n", "<leader>cl", function()
+          vim.cmd.RustLsp("rebuildProcMacros")
+        end, { desc = "Rust rebuild proc macros", buffer = bufnr })
         vim.keymap.set("i", "'", "'")
       end,
       settings = {
