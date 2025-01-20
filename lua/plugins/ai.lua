@@ -29,7 +29,16 @@ return {
         provider_opts = {},
       },
       provider = "copilot",
-      auto_suggestions_provider = "copilot",
+      -- copilot = {
+      --   endpoint = "https://api.githubcopilot.com/",
+      --   model = "claude-3.5-sonnet",
+      --   proxy = nil, -- [protocol://]host[:port] Use this proxy
+      --   allow_insecure = false, -- Do not allow insecure server connections
+      --   timeout = 30000, -- Timeout in milliseconds
+      --   temperature = 0.1, -- kinda creative
+      --   max_tokens = 8192,
+      -- },
+      -- auto_suggestions_provider = "copilot",
       behaviour = {
         auto_focus_sidebar = false,
         auto_suggestions = false,
@@ -84,17 +93,33 @@ return {
       },
     },
   },
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   cmd = "Copilot",
-  --   event = "InsertEnter",
-  --   opts = {
-  --     filetypes = {
-  --       ["*"] = false, -- disable for all other filetypes and ignore default `filetypes`
-  --     },
-  --   },
-  --   config = function(opts)
-  --     require("copilot").setup(opts)
-  --   end,
-  -- },
+  { "AndreM222/copilot-lualine" },
+  {
+    "zbirenbaum/copilot.lua",
+    event = "InsertEnter",
+    opts = {
+      suggestion = {
+        enabled = true,
+        auto_trigger = false,
+      },
+      filetypes = {
+        yaml = false,
+        markdown = false,
+        help = false,
+        gitcommit = false,
+        gitrebase = false,
+        hgcommit = false,
+        svn = false,
+        cvs = false,
+        ["."] = false,
+        sh = function()
+          if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), "^%.env.*") then
+            -- disable for .env files
+            return false
+          end
+          return true
+        end,
+      },
+    },
+  },
 }
