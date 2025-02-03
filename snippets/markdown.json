@@ -1,0 +1,12 @@
+{
+  "bmat": {
+    "prefix": "bmat",
+    "body": ["\\$\\$", "$1", "\\$\\$"],
+    "description": "Insert a block math environment"
+  },
+  "mat": {
+    "prefix": "mat",
+    "body": ["\\$$1\\$"],
+    "description": "Insert an inline math environment"
+  }
+}

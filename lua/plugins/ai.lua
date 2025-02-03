@@ -40,7 +40,7 @@ return {
       -- },
       -- auto_suggestions_provider = "copilot",
       behaviour = {
-        auto_focus_sidebar = false,
+        -- auto_focus_sidebar = false,
         auto_suggestions = false,
         auto_suggestions_respect_ignore = true,
         auto_apply_diff_after_generation = false,
