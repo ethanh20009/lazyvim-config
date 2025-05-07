@@ -38,6 +38,9 @@ return {
         max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
         --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
       },
+      hints = {
+        enabled = false,
+      },
       selector = {
         --- @alias avante.SelectorProvider "native" | "fzf_lua" | "mini_pick" | "snacks" | "telescope" | fun(selector: avante.ui.Selector): nil
         provider = "snacks",
