@@ -8,3 +8,7 @@ map("n", "<C-d>", "<C-d>zz", {})
 map("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
   desc = "Search on current file",
 })
+map("t", "<Esc>", "<C-\\><C-n>", {
+  desc = "Escape Terminal",
+  noremap = true,
+})

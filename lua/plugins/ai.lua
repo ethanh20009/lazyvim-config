@@ -1,4 +1,10 @@
 return {
+  -- {
+  --   "CopilotC-Nvim/CopilotChat.nvim",
+  --   dependencies = {
+  --     "nvim-treesitter/nvim-treesitter",
+  --   },
+  -- },
   {
     "saghen/blink.cmp",
     dependencies = {
@@ -19,41 +25,46 @@ return {
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
-    lazy = false,
-    version = false, -- set this if you want to always pull the latest change
+    version = false, -- Never set this value to "*"! Never!
     opts = {
-      file_selector = {
-        --- @alias FileSelectorProvider "native" | "fzf" | "telescope" | string
-        provider = "fzf",
-        -- Options override for custom providers
-        provider_opts = {},
-      },
-      provider = "copilot",
-      -- copilot = {
-      --   endpoint = "https://api.githubcopilot.com/",
-      --   model = "claude-3.5-sonnet",
-      --   proxy = nil, -- [protocol://]host[:port] Use this proxy
-      --   allow_insecure = false, -- Do not allow insecure server connections
-      --   timeout = 30000, -- Timeout in milliseconds
-      --   temperature = 0.1, -- kinda creative
-      --   max_tokens = 8192,
-      -- },
-      -- auto_suggestions_provider = "copilot",
-      behaviour = {
-        -- auto_focus_sidebar = false,
-        auto_suggestions = false,
-        auto_suggestions_respect_ignore = true,
-        auto_apply_diff_after_generation = false,
-      },
-      hints = { enabled = false },
       -- add any opts here
-    },
-    keys = {
-      {
-        "<leader>ac",
-        "<CMD>AvanteChat<CR>",
-        desc = "avante: chat",
+      -- for example
+      provider = "copilot",
+      openai = {
+        -- endpoint = "https://api.openai.com/v1",
+        -- model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+        timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
+        temperature = 0,
+        max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+        --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
       },
+      selector = {
+        --- @alias avante.SelectorProvider "native" | "fzf_lua" | "mini_pick" | "snacks" | "telescope" | fun(selector: avante.ui.Selector): nil
+        provider = "snacks",
+        -- Options override for custom providers
+        -- provider_opts = {},
+      },
+      keys = function(_, keys)
+        ---@type avante.Config
+        local opts =
+          require("lazy.core.plugin").values(require("lazy.core.config").spec.plugins["avante.nvim"], "opts", false)
+
+        local mappings = {
+          {
+            opts.mappings.ask,
+            function()
+              -- Call vim AvanteToggle
+              vim.cmd("AvanteToggle")
+            end,
+            desc = "avante: ask",
+            mode = { "n", "v" },
+          },
+        }
+        mappings = vim.tbl_filter(function(m)
+          return m[1] and #m[1] > 0
+        end, mappings)
+        return vim.list_extend(mappings, keys)
+      end,
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
@@ -64,25 +75,29 @@ return {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
-      "echasnovski/mini.icons", -- or nvim-tree/nvim-web-devicons
+      -- "echasnovski/mini.pick", -- for file_selector provider mini.pick
+      -- "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+      -- "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+      "ibhagwan/fzf-lua", -- for file_selector provider fzf
+      "echasnovski/mini.icons",
       "zbirenbaum/copilot.lua", -- for providers='copilot'
-      {
-        -- support for image pasting
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          -- recommended settings
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-            -- required for Windows users
-            use_absolute_path = true,
-          },
-        },
-      },
+      -- {
+      --   -- support for image pasting
+      --   "HakonHarnes/img-clip.nvim",
+      --   event = "VeryLazy",
+      --   opts = {
+      --     -- recommended settings
+      --     default = {
+      --       embed_image_as_base64 = false,
+      --       prompt_for_file_name = false,
+      --       drag_and_drop = {
+      --         insert_mode = true,
+      --       },
+      --       -- required for Windows users
+      --       use_absolute_path = true,
+      --     },
+      --   },
+      -- },
       {
         -- Make sure to set this up properly if you have lazy=true
         "MeanderingProgrammer/render-markdown.nvim",
@@ -93,7 +108,6 @@ return {
       },
     },
   },
-  { "AndreM222/copilot-lualine" },
   {
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
