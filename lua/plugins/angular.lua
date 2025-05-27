@@ -1,19 +1,23 @@
 return { -- correctly setup lspconfig
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   opts = { -- make sure mason installs the server
-  --     servers = {
-  --       angularls = {
-  --         filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx", "angular.html" },
-  --       },
-  --       html = {
-  --         filetypes = {
-  --           "angular.html",
-  --           "html",
-  --           "templ",
-  --         },
-  --       },
-  --     },
+  -- Remove when angular lsp thing fixed.
+  {
+    "neovim/nvim-lspconfig",
+    -- commit = "1f941b3668151963fca3e1230922c433ea4b7b64",
+    opts = { -- make sure mason installs the server
+      servers = {
+        -- angularls = {
+        --   filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx", "htmlangular" },
+        -- },
+        html = {
+          filetypes = {
+            "htmlangular",
+            "html",
+            "templ",
+          },
+        },
+      },
+    },
+  },
   --     setup = {
   --       angularls = function(_, opts)
   --         vim.filetype.add({
