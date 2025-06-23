@@ -1,0 +1,17 @@
+{
+  "name": "Angular",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "lua",
+        "path": "./lua.json"
+      },
+      {
+        "language": [
+          "htmlangular"
+        ],
+        "path": "./html.json"
+      }
+    ]
+  }
+}
