@@ -92,7 +92,7 @@ return {
       -- "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
       "ibhagwan/fzf-lua", -- for file_selector provider fzf
       "echasnovski/mini.icons",
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      -- "zbirenbaum/copilot.lua", -- for providers='copilot'
       -- {
       --   -- support for image pasting
       --   "HakonHarnes/img-clip.nvim",
@@ -121,31 +121,58 @@ return {
     },
   },
   {
-    "zbirenbaum/copilot.lua",
-    event = "InsertEnter",
-    opts = {
-      suggestion = {
-        enabled = true,
-        auto_trigger = false,
-      },
-      filetypes = {
-        yaml = false,
-        markdown = false,
-        help = false,
-        gitcommit = false,
-        gitrebase = false,
-        hgcommit = false,
-        svn = false,
-        cvs = false,
-        ["."] = false,
-        sh = function()
-          if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), "^%.env.*") then
-            -- disable for .env files
-            return false
-          end
-          return true
-        end,
-      },
-    },
+    "ethanh20009/minuet-ai.nvim",
+    config = function()
+      require("minuet").setup({
+        provider = "gemini",
+        gemini = {
+          model = "gemini-2.0-flash",
+          stream = true,
+          api_key = os.getenv("GEMINI_API_KEY"),
+          end_point = "https://generativelanguage.googleapis.com/v1beta/models",
+          optional = {
+            generationConfig = {
+              maxOutputTokens = 256,
+              thinkingConfig = {
+                thinkingBudget = 0,
+              },
+            },
+            safetySettings = {
+              {
+                category = "HARM_CATEGORY_DANGEROUS_CONTENT",
+                threshold = "BLOCK_ONLY_HIGH",
+              },
+            },
+          },
+        },
+        virtualtext = {
+          auto_trigger_ft = {},
+          disabled = function()
+            -- Reject .env files
+            local file_name = vim.fn.expand("%:t")
+            local disabled_names = {
+              [".env"] = true,
+              [".apikeys.fish"] = true,
+              ["package-lock"] = true,
+            }
+            return disabled_names[file_name]
+          end,
+          keymap = {
+            -- accept whole completion
+            accept = "<A-l>",
+            -- accept one line
+            accept_line = "<CA-l>",
+            -- accept n lines (prompts for number)
+            -- e.g. "A-z 2 CR" will accept 2 lines
+            -- accept_n_lines = "<A-z>",
+            -- Cycle to prev completion item, or manually invoke completion
+            prev = "<A-[>",
+            -- Cycle to next completion item, or manually invoke completion
+            next = "<A-]>",
+            dismiss = "<A-e>",
+          },
+        },
+      })
+    end,
   },
 }
