@@ -7,6 +7,21 @@ return {
         sidebars = "transparent",
         floats = "transparent",
       },
+      on_highlights = function(highlights, colors)
+        highlights.CursorLineNr = {
+          bold = true,
+          fg = "#ffffff",
+        }
+        highlights.LineNr = {
+          fg = colors.fg,
+        }
+        highlights.LineNrAbove = {
+          fg = colors.fg_dark,
+        }
+        highlights.LineNrBelow = {
+          fg = colors.fg_dark,
+        }
+      end,
     },
   },
   {
