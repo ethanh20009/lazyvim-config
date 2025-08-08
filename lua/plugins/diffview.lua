@@ -4,6 +4,16 @@ return {
     { "<leader>gv", "<cmd>DiffviewOpen<cr>", desc = "Diff View Open" },
     { "<leader>gd", "<cmd>DiffviewClose<cr>", desc = "Diff View Close" },
     { "<leader>gV", ":DiffviewOpen ", desc = "Compare with branch" },
+    {
+      "<leader>gm",
+      function()
+        local file = assert(io.popen("git merge-base HEAD master", "r"))
+        local output = file:read("*all")
+        file:close()
+        vim.cmd(":DiffviewOpen --staged " .. output)
+      end,
+      desc = "Compare with branch",
+    },
   },
   opts = {
     keymaps = {
