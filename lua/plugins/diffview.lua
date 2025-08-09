@@ -21,7 +21,6 @@ return {
     },
   },
   config = function(_, opts)
-    vim.opt.diffopt:append({ "algorithm:patience" })
     local actions = require("diffview.actions")
 
     require("diffview").setup({
