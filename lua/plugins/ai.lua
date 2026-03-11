@@ -91,7 +91,7 @@ return {
       -- "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
       -- "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
       "ibhagwan/fzf-lua", -- for file_selector provider fzf
-      "echasnovski/mini.icons",
+      "nvim-mini/mini.icons",
       -- "zbirenbaum/copilot.lua", -- for providers='copilot'
       -- {
       --   -- support for image pasting
