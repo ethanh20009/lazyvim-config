@@ -30,6 +30,12 @@ return {
       colorscheme = "tokyonight",
     },
   },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      inlay_hints = { enabled = false },
+    },
+  },
   -- {
   --   "nvim-telescope/telescope.nvim",
   --   keys = {
