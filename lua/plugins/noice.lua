@@ -3,6 +3,9 @@ return {
   event = "VeryLazy",
   -- REMOVE THIS once this issue is fixed: https://github.com/yioneko/vtsls/issues/159
   opts = {
+    presets = {
+      lsp_doc_border = true, -- add a border to hover docs and signature help
+    },
     routes = {
       {
         filter = {

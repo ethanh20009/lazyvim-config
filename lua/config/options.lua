@@ -4,15 +4,18 @@
 --
 -- vim.g.lazyvim_python_lsp = "pyright"
 
-vim.opt.diffopt = {
-  "internal",
-  "filler",
-  "closeoff",
-  -- "context:12",
-  "algorithm:patience",
-  "linematch:200",
-  "indent-heuristic",
-  -- "inline:char", -- Probably neovim 12+ needed
-}
+-- vim.opt.diffopt = {
+--   "internal",
+--   "filler",
+--   "closeoff",
+--   -- "context:12",
+--   "algorithm:patience",
+--   "linematch:200",
+--   "indent-heuristic",
+--   -- "inline:char", -- Probably neovim 12+ needed
+-- }
 
 vim.opt.nrformats:append("alpha")
+
+-- Add a border to floating windows (LSP hover, diagnostics, etc.)
+vim.o.winborder = "rounded"
