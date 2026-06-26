@@ -4,18 +4,12 @@
 --
 -- vim.g.lazyvim_python_lsp = "pyright"
 
--- vim.opt.diffopt = {
---   "internal",
---   "filler",
---   "closeoff",
---   -- "context:12",
---   "algorithm:patience",
---   "linematch:200",
---   "indent-heuristic",
---   -- "inline:char", -- Probably neovim 12+ needed
--- }
+vim.opt.diffopt = { "internal", "filler", "closeoff", "indent-heuristic", "inline:char", "linematch:40", "iwhite" }
 
 vim.opt.nrformats:append("alpha")
+
+-- Use Copilot inline ghost-text suggestions instead of the blink completion source
+vim.g.ai_cmp = false
 
 -- Add a border to floating windows (LSP hover, diagnostics, etc.)
 vim.o.winborder = "rounded"
